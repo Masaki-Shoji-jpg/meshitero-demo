@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     end
   end
 
+  private
   def user_params
     # name, email_address, password, password_confirmation を許可
     params.require(:user).permit(:name, :email_address, :password, :password_confirmation)
