@@ -7,7 +7,20 @@
     <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+  <header>
+    <% if authenticated? %>
+      <li>
+        <%= link_to "ログアウト", session_path, data: { turbo_method: :delete } %>
+      </li>
+    <% else %>
+      <li>
+        <%= link_to "新規登録", new_user_path %>
+      </li>
+      <li>
+        <%= link_to "ログイン", new_session_path %>
+      </li>
+    <% end %>
+  </header>
     <%= yield :head %>
 
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
